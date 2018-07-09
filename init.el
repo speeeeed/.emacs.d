@@ -40,3 +40,7 @@
 			(awk-mode . "awk")
 			(other . "linux")))
 (setq c-basic-offset 8)
+
+;; set font
+(set-face-attribute 'default nil
+		    :family "Courier New" :height 145 :weight 'normal)
