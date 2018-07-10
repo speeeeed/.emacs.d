@@ -44,3 +44,9 @@
 ;; set font
 (set-face-attribute 'default nil
 		    :family "Courier New" :height 145 :weight 'normal)
+
+;; Chinese Font 配制中文字体
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "Microsoft Yahei" :size 16)))
