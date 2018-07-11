@@ -17,7 +17,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (nlinum evil))))
+ '(package-selected-packages (quote (company nlinum evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,3 +44,11 @@
 ;; set font
 (set-face-attribute 'default nil
 		    :family "Courier New" :height 145 :weight 'normal)
+
+;; Chinese Font 配制中文字体
+;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;   (set-fontset-font (frame-parameter nil 'font)
+;;                     charset
+;;                     (font-spec :family "Microsoft Yahei" :size 16)))
+
+(global-company-mode t)
