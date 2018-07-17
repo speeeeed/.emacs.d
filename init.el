@@ -9,7 +9,7 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.emacs-china.org/gnu/")
-	("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
+        ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
         ("melpa" . "http://elpa.emacs-china.org/melpa/")
     ))
 (custom-set-variables
@@ -32,7 +32,10 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-(global-nlinum-mode t)            ;; global nlinum mode
+(if (not window-system)
+  (setq linum-format "%4d \u2502"))
+;; (setq linum-format "%4d \u2502")
+(global-linum-mode t)            ;; global nlinum mode
 (setq inhibit-startup-message t)  ;; disable startup message
 (setq make-backup-files nil)      ;; disable make backup files
 
@@ -44,7 +47,7 @@
 
 ;; set font
 (set-face-attribute 'default nil
-		    :family "Courier New" :height 145 :weight 'normal)
+		    :family "Courier 10 pitch" :height 145 :weight 'normal)
 
 ;; Chinese Font 配制中文字体
 ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
