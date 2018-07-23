@@ -17,7 +17,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (yasnippet-snippets yasnippet company nlinum evil))))
+ '(package-selected-packages
+   (quote
+    (elpy yasnippet-snippets yasnippet company nlinum evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,6 +46,17 @@
 			(awk-mode . "awk")
 			(other . "linux")))
 (setq c-basic-offset 8)
+(setq-default indent-tabs-mode t)
+
+(defun set-c-mode-space ()
+  (interactive)
+  (setq c-basic-offset 4)
+  (setq-default indent-tabs-mode nil))
+
+(defun set-c-mode-tab ()
+  (interactive)
+  (setq c-basic-offset 8)
+  (setq-default indent-tabs-mode t))
 
 ;; set font
 (set-face-attribute 'default nil
@@ -58,6 +71,7 @@
 (global-company-mode t)
 (yas-global-mode 1)
 
+(elpy-enable)
 
 ;; fix yasnippet and company tab conflict
 (defun check-expansion ()
