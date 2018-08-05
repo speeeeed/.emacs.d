@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (elpy yasnippet-snippets yasnippet company nlinum evil))))
+    (counsel yasnippet-snippets yasnippet company evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,19 +27,40 @@
  ;; If there is more than one, they won't work right.
  )
 
-(require 'evil)
-(evil-mode t)
+;; define some function to make config more readable
 
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+(defun basic-config ()
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (if (not window-system)
+      (setq linum-format "%4d \u2502"))
+  (global-linum-mode t)            ;; global linum mode
+  (setq inhibit-startup-message t)  ;; disable startup message
+  (setq make-backup-files nil)      ;; disable make backup files
+  ;; set font
+  (set-face-attribute 'default nil
+		      :family "Courier 10 pitch" :height 145 :weight 'normal)
+  ;; Chinese Font 配制中文字体
+  ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;;   (set-fontset-font (frame-parameter nil 'font)
+  ;;                     charset
+  ;;                     (font-spec :family "Microsoft Yahei" :size 16)))
+  )
 
-(if (not window-system)
-  (setq linum-format "%4d \u2502"))
-;; (setq linum-format "%4d \u2502")
-(global-linum-mode t)            ;; global nlinum mode
-(setq inhibit-startup-message t)  ;; disable startup message
-(setq make-backup-files nil)      ;; disable make backup files
+(defun evil-and-leader-key-config ()
+  (require 'evil)
+  (evil-mode t))
+
+(defun plugins-config ()
+  (global-company-mode t)
+  (yas-global-mode 1)
+  (ivy-mode 1)
+  )
+
+(basic-config)
+(evil-and-leader-key-config)
+(plugins-config)
 
 ;; cc-mode
 (setq c-default-style '((java-mode . "java")
@@ -57,21 +78,6 @@
   (interactive)
   (setq c-basic-offset 8)
   (setq-default indent-tabs-mode t))
-
-;; set font
-(set-face-attribute 'default nil
-		    :family "Courier 10 pitch" :height 145 :weight 'normal)
-
-;; Chinese Font 配制中文字体
-;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     charset
-;;                     (font-spec :family "Microsoft Yahei" :size 16)))
-
-(global-company-mode t)
-(yas-global-mode 1)
-
-(elpy-enable)
 
 ;; fix yasnippet and company tab conflict
 (defun check-expansion ()
