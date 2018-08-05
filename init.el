@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel yasnippet-snippets yasnippet company evil))))
+    (evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,6 +49,26 @@
   )
 
 (defun evil-and-leader-key-config ()
+  (require 'evil-leader)
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+   ;; Normal function
+   "f" 'counsel-find-file
+   "s" 'save-buffer
+   "b" 'ivy-switch-buffer
+   "<SPC>" 'counsel-M-x
+
+   ;; Projectile
+   "p f" 'counsel-projectile-find-file
+   "p d" 'counsel-projectile-find-dir
+
+
+   ;; Emacs help
+   "h k" 'counsel-descbinds
+   "h v" 'counsel-describe-variable
+   "h f" 'counsel-describe-function
+   )
   (require 'evil)
   (evil-mode t))
 
@@ -56,6 +76,21 @@
   (global-company-mode t)
   (yas-global-mode 1)
   (ivy-mode 1)
+  (counsel-mode 1)
+  (counsel-projectile-mode t)
+  (add-hook 'c-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
+  (with-eval-after-load 'counsel-gtags
+    (evil-leader/set-key
+     ;; GNU global tags
+     "g r" 'counsel-gtags-find-reference
+     "g d" 'counsel-gtags-find-definition
+     "g b" 'counsel-gtags-go-backward
+     "g f" 'counsel-gtags-go-forward
+     "g s" 'counsel-gtags-find-symbol
+     "g t" 'counsel-gtags-dwim
+     "g u" 'counsel-gtags-update-tags
+   ))
   )
 
 (basic-config)
