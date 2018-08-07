@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
+    (powerline-evil evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -73,6 +73,9 @@
   (evil-mode t))
 
 (defun plugins-config ()
+  (if (not window-system)
+      (powerline-evil-vim-color-theme)
+    (powerline-evil-center-color-theme))
   (global-company-mode t)
   (yas-global-mode 1)
   (ivy-mode 1)
