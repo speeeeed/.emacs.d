@@ -34,18 +34,19 @@
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
   (if (not window-system)
-      (setq linum-format "%4d \u2502"))
+;;      (setq linum-format "%4d \u2502"))
+      (setq linum-format "%4d "))
   (global-linum-mode t)            ;; global linum mode
   (setq inhibit-startup-message t)  ;; disable startup message
   (setq make-backup-files nil)      ;; disable make backup files
   ;; set font
   (set-face-attribute 'default nil
 		      :family "Courier 10 pitch" :height 145 :weight 'normal)
-  ;; Chinese Font 配制中文字体
   ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
   ;;   (set-fontset-font (frame-parameter nil 'font)
   ;;                     charset
   ;;                     (font-spec :family "Microsoft Yahei" :size 16)))
+  (load-theme 'manoj-dark)
   )
 
 (defun evil-and-leader-key-config ()
