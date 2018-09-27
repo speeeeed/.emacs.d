@@ -30,6 +30,7 @@
 ;; define some function to make config more readable
 
 (defun basic-config ()
+  (load-theme 'deeper-blue)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
@@ -46,7 +47,15 @@
   ;;   (set-fontset-font (frame-parameter nil 'font)
   ;;                     charset
   ;;                     (font-spec :family "Microsoft Yahei" :size 16)))
-  (load-theme 'manoj-dark)
+  (setq redisplay-dont-pause t
+	scroll-margin 3
+	scroll-step 1
+	scroll-conservatively 10000
+	scroll-preserve-screen-position 1)
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
+  (global-whitespace-mode t)
+  (setq-default whitespace-style '(tabs tab-mark))
   )
 
 (defun evil-and-leader-key-config ()
