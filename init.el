@@ -80,19 +80,6 @@
    "h f" 'counsel-describe-function
    )
   (require 'evil)
-  (evil-mode t))
-
-(defun plugins-config ()
-  (if (not window-system)
-      (powerline-evil-vim-color-theme)
-    (powerline-evil-center-color-theme))
-  (global-company-mode t)
-  (yas-global-mode 1)
-  (ivy-mode 1)
-  (counsel-mode 1)
-  (counsel-projectile-mode t)
-  (add-hook 'c-mode-hook 'counsel-gtags-mode)
-  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key
      ;; GNU global tags
@@ -104,10 +91,24 @@
      "g t" 'counsel-gtags-dwim
      "g u" 'counsel-gtags-update-tags
    ))
+  (if (not window-system)
+      (powerline-evil-vim-color-theme)
+    (powerline-evil-center-color-theme))
+  (evil-mode t))
+
+(defun plugins-config ()
+  (global-company-mode t)
+  (yas-global-mode 1)
+  (ivy-mode 1)
+  (counsel-mode 1)
+  (counsel-projectile-mode t)
+  (add-hook 'c-mode-hook 'counsel-gtags-mode)
+  (add-hook 'c++-mode-hook 'counsel-gtags-mode)
   )
 
 (basic-config)
-(evil-and-leader-key-config)
+;; evil mode
+;; (evil-and-leader-key-config)
 (plugins-config)
 
 ;; cc-mode
