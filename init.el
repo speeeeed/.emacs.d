@@ -32,8 +32,8 @@
 (defun basic-config ()
   (load-theme 'deeper-blue)
   (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
+  (menu-bar-mode  1)
+;;  (scroll-bar-mode -1)
   (if (not window-system)
 ;;      (setq linum-format "%4d \u2502"))
       (setq linum-format "%4d "))
@@ -47,13 +47,13 @@
   ;;   (set-fontset-font (frame-parameter nil 'font)
   ;;                     charset
   ;;                     (font-spec :family "Microsoft Yahei" :size 16)))
-  (setq redisplay-dont-pause t
-	scroll-margin 3
-	scroll-step 1
-	scroll-conservatively 10000
-	scroll-preserve-screen-position 1)
-  (recentf-mode 1)
-  (setq recentf-max-menu-items 25)
+;;  (setq redisplay-dont-pause t
+;;	scroll-margin 3
+;;	scroll-step 1
+;;	scroll-conservatively 10000
+;;	scroll-preserve-screen-position 1)
+;;  (recentf-mode 1)
+;;  (setq recentf-max-menu-items 25)
   (global-whitespace-mode t)
   (setq-default whitespace-style '(tabs tab-mark))
   )
@@ -108,7 +108,7 @@
 
 (basic-config)
 ;; evil mode
-;; (evil-and-leader-key-config)
+(evil-and-leader-key-config)
 (plugins-config)
 
 ;; cc-mode
