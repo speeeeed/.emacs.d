@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (powerline-evil evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
+    (markdown-preview-mode markdown-mode powerline-evil evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -32,8 +32,9 @@
 (defun basic-config ()
   (load-theme 'deeper-blue)
   (tool-bar-mode -1)
-  (menu-bar-mode  1)
-;;  (scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
+  (scroll-all-mode -1)
   (if (not window-system)
 ;;      (setq linum-format "%4d \u2502"))
       (setq linum-format "%4d "))
@@ -42,11 +43,14 @@
   (setq make-backup-files nil)      ;; disable make backup files
   ;; set font
   (set-face-attribute 'default nil
-		      :family "Courier 10 pitch" :height 145 :weight 'normal)
-  ;; (dolist (charset '(kana han symbol cjk-misc bopomofo))
-  ;;   (set-fontset-font (frame-parameter nil 'font)
-  ;;                     charset
-  ;;                     (font-spec :family "Microsoft Yahei" :size 16)))
+                        :family "Courier New" :height 145 :weight 'normal)
+
+  (if window-system
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+	(set-fontset-font (frame-parameter nil 'font)
+			  charset
+			  (font-spec :family "Microsoft Yahei" :size 16)))
+  )
 ;;  (setq redisplay-dont-pause t
 ;;	scroll-margin 3
 ;;	scroll-step 1
@@ -91,9 +95,9 @@
      "g t" 'counsel-gtags-dwim
      "g u" 'counsel-gtags-update-tags
    ))
-  (if (not window-system)
-      (powerline-evil-vim-color-theme)
-    (powerline-evil-center-color-theme))
+;;  (if (not window-system)
+;;      (powerline-evil-vim-color-theme)
+;;    (powerline-evil-center-color-theme))
   (evil-mode t))
 
 (defun plugins-config ()
@@ -104,12 +108,29 @@
   (counsel-projectile-mode t)
   (add-hook 'c-mode-hook 'counsel-gtags-mode)
   (add-hook 'c++-mode-hook 'counsel-gtags-mode)
-  )
+;;  (markdown-mode 1)
+;;  (markdown-preview-mode 1)
+)
+
+(defun awesome-tab-config ()
+  (add-to-list 'load-path "~/.emacs.d/elisp")
+  (require 'awesome-tab)
+  (awesome-tab-mode t)
+  (global-set-key (kbd "M-<left>")  'awesome-tab-backward-tab)
+  (global-set-key (kbd "M-<right>") 'awesome-tab-forward-tab)
+  (global-set-key (kbd "M-<up>")    'awesome-tab-backward-group)
+  (global-set-key (kbd "M-<down>")  'awesome-tab-forward-group)
+)
+;;(setq-default awesome-tab-background-color "deeper blue")
+;;(setq-default awesome-tab-selected "red")
+;;(setq-default awesome-tab-unselected "green")
+
 
 (basic-config)
 ;; evil mode
 (evil-and-leader-key-config)
 (plugins-config)
+(awesome-tab-config)
 
 ;; cc-mode
 (setq c-default-style '((java-mode . "java")
