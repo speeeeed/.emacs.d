@@ -30,9 +30,9 @@
 ;; define some function to make config more readable
 
 (defun basic-config ()
-  (load-theme 'deeper-blue)
+  (load-theme 'tsdh-dark)
   (tool-bar-mode -1)
-  (menu-bar-mode  1)
+  (menu-bar-mode -1)
 ;;  (scroll-bar-mode -1)
   (if (not window-system)
 ;;      (setq linum-format "%4d \u2502"))
@@ -52,8 +52,8 @@
 ;;	scroll-step 1
 ;;	scroll-conservatively 10000
 ;;	scroll-preserve-screen-position 1)
-;;  (recentf-mode 1)
-;;  (setq recentf-max-menu-items 25)
+  (recentf-mode 1)
+  (setq recentf-max-menu-items 25)
   (global-whitespace-mode t)
   (setq-default whitespace-style '(tabs tab-mark))
   )
@@ -80,6 +80,8 @@
    "h f" 'counsel-describe-function
    )
   (require 'evil)
+  (setcdr evil-insert-state-map nil)
+  (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key
      ;; GNU global tags
@@ -91,9 +93,9 @@
      "g t" 'counsel-gtags-dwim
      "g u" 'counsel-gtags-update-tags
    ))
-  (if (not window-system)
-      (powerline-evil-vim-color-theme)
-    (powerline-evil-center-color-theme))
+;;  (if (not window-system)
+;;      (powerline-evil-vim-color-theme)
+;;    (powerline-evil-center-color-theme))
   (evil-mode t))
 
 (defun plugins-config ()
