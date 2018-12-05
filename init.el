@@ -19,7 +19,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-preview-mode markdown-mode powerline-evil evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
+    (evil-smartparens markdown-preview-mode markdown-mode powerline-evil evil-leader counsel-gtags counsel-projectile projectile counsel yasnippet-snippets yasnippet company evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -30,10 +30,10 @@
 ;; define some function to make config more readable
 
 (defun basic-config ()
-  (load-theme 'tsdh-dark)
+  (load-theme 'deeper-blue)
   (tool-bar-mode -1)
   (menu-bar-mode -1)
-;; (scroll-bar-mode -1)
+  (scroll-bar-mode -1)
   (scroll-all-mode -1)
   (if (not window-system)
 ;;      (setq linum-format "%4d \u2502"))
@@ -43,7 +43,7 @@
   (setq make-backup-files nil)      ;; disable make backup files
   ;; set font
   (set-face-attribute 'default nil
-                        :family "Courier New" :height 145 :weight 'normal)
+                        :family "Monaco" :height 120 :weight 'normal)
 
   (if window-system
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -58,8 +58,8 @@
 ;;	scroll-preserve-screen-position 1)
   (recentf-mode 1)
   (setq recentf-max-menu-items 25)
-  (global-whitespace-mode t)
-  (setq-default whitespace-style '(tabs tab-mark))
+;;  (global-whitespace-mode t)
+;;  (setq-default whitespace-style '(tabs tab-mark))
   )
 
 (defun evil-and-leader-key-config ()
@@ -71,7 +71,9 @@
    "f" 'counsel-find-file
    "s" 'save-buffer
    "b" 'ivy-switch-buffer
+   "r" 'recentf-open-files
    "<SPC>" 'counsel-M-x
+   "w" 'whitespace-mode
 
    ;; Projectile
    "p f" 'counsel-projectile-find-file
@@ -110,6 +112,8 @@
   (counsel-projectile-mode t)
   (add-hook 'c-mode-hook 'counsel-gtags-mode)
   (add-hook 'c++-mode-hook 'counsel-gtags-mode)
+  (show-smartparens-global-mode t)
+  (evil-smartparens-mode t)
 ;;  (markdown-mode 1)
 ;;  (markdown-preview-mode 1)
 )
