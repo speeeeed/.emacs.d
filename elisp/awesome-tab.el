@@ -500,13 +500,13 @@ current cached copy."
 (defface awesome-tab-unselected
   '((t
      (:inherit awesome-tab-default
-               :foreground "dark green" :overline "dark green")))
+               :foreground "dark red" :overline "dark red")))
   "Face used for unselected tabs."
   :group 'awesome-tab)
 
 (defface awesome-tab-selected
   '((t (:inherit awesome-tab-default :weight ultra-bold :width semi-expanded
-                 :foreground "green3" :overline "green3")))
+                 :foreground "green" :overline "green")))
   "Face used for the selected tab."
   :group 'awesome-tab)
 
