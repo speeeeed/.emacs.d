@@ -17,6 +17,4 @@
 
 (require 'init-cc)
 
-
-
-
+(require 'init-flycheck)
