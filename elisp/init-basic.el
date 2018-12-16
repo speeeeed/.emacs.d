@@ -2,7 +2,8 @@
 
 
 ;; basic setting
-(load-theme 'deeper-blue)
+;; (load-theme 'deeper-blue)
+(load-theme 'wombat)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -26,6 +27,7 @@
 (require 'vc)
 (delete 'Git vc-handled-backends)
 
+(setq initial-scratch-message ";; Happy Hacking, enjoy emacs!\n\n")
 
 ;; awesome-tab
 (use-package awesome-tab
@@ -36,6 +38,11 @@
 	 ("M-<right>" . awesome-tab-forward-tab)
 	 ("M-<up>" . awesome-tab-backward-group)
 	 ("M-<down>" . awesome-tab-forward-group)))
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode t))
 
 
 (provide 'init-basic)
