@@ -40,6 +40,8 @@
             (if (eq window-system 'x)
                 (font-lock-mode 1))))
 
+(modify-syntax-entry ?_ "w")  ;; will set '_'  a part of word
+
 ;; awesome-tab
 (use-package awesome-tab
   :load-path "~/.emacs.d/elisp"
