@@ -1,2 +1,4 @@
+elpa
+custom.el
 auto-save-list
-eshell
+projectile-*

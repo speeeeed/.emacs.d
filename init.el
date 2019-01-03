@@ -17,4 +17,5 @@
 
 (require 'init-cc)
 
-(require 'init-flycheck)
+;; (require 'init-yasnippet)
+;; (require 'init-flycheck)

@@ -29,6 +29,17 @@
 
 (setq initial-scratch-message ";; Happy Hacking, enjoy emacs!\n\n")
 
+;; init octave mode
+;; (autoload 'octave-mode "octave-mode" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
+
 ;; awesome-tab
 (use-package awesome-tab
   :load-path "~/.emacs.d/elisp"
