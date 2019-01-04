@@ -52,4 +52,9 @@
       "g t" 'counsel-gtags-dwim
       "g u" 'counsel-gtags-update-tags)))
 
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
 (provide 'init-evil)
