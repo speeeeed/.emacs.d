@@ -1,5 +1,7 @@
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
@@ -56,5 +58,14 @@
   :ensure t
   :config
   (global-evil-surround-mode 1))
+
+(use-package evil-collection
+  :ensure t
+  :init
+  (setq evil-want-keybinding nil)
+  :config
+  (with-eval-after-load 'imenu-list
+    (require 'evil-collection-imenu-list)
+    (evil-collection-imenu-list-setup)))
 
 (provide 'init-evil)

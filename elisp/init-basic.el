@@ -52,10 +52,17 @@
 	 ("M-<up>" . awesome-tab-backward-group)
 	 ("M-<down>" . awesome-tab-forward-group)))
 
-(use-package beacon
-  :ensure t
+(use-package imenu-list
+  :load-path "~/.emacs.d/elisp/"
   :config
-  (beacon-mode t))
+  (imenu-list-minor-mode)
+  :bind (("C-'" . imenu-list-smart-toggle)))
+
+;; not important
+;;(use-package beacon
+;;  :ensure t
+;;  :config
+;;  (beacon-mode t))
 
 ;; for test
 (use-package multiple-cursors
