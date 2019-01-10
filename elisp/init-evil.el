@@ -42,6 +42,9 @@
       "p f" 'counsel-projectile-find-file
       "p d" 'counsel-projectile-find-dir))
 
+  (with-eval-after-load 'imenu-list
+    (evil-leader/set-key
+      "i" 'imenu-list-smart-toggle))
 
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key

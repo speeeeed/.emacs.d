@@ -55,8 +55,7 @@
 (use-package imenu-list
   :load-path "~/.emacs.d/elisp/"
   :config
-  (imenu-list-minor-mode)
-  :bind (("C-'" . imenu-list-smart-toggle)))
+  (imenu-list-minor-mode))
 
 ;; not important
 ;;(use-package beacon
