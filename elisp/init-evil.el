@@ -22,6 +22,9 @@
    ;; Normal function
    "s" 'save-buffer
    "r" 'recentf-open-files
+   "o" 'other-window
+   "l" 'highlight-symbol-at-point
+   "z" 'unhighlight-regexp
    "w" 'whitespace-mode)
 
   (with-eval-after-load 'ivy

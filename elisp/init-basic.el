@@ -15,7 +15,7 @@
 (setq make-backup-files nil)      ;; disable make backup files
 ;; set font
 (set-face-attribute 'default nil
-                    :family "Monaco" :height 120 :weight 'normal)
+                    :family "Monospace" :height 120 :weight 'normal)
 
 (if window-system
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
