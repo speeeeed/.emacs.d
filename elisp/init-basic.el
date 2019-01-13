@@ -4,9 +4,12 @@
 ;; basic setting
 ;; (load-theme 'deeper-blue)
 (load-theme 'wombat)
+
+;; face
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
+(if window-system
+    (scroll-bar-mode -1))
 (scroll-all-mode -1)
 (if (not window-system)
     (setq linum-format "%4d "))
@@ -46,6 +49,8 @@
                 (font-lock-mode 1))))
 
 (modify-syntax-entry ?_ "w")  ;; will set '_'  a part of word
+(add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'c++-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
 ;; awesome-tab
 (use-package awesome-tab
@@ -60,7 +65,7 @@
 (use-package imenu-list
   :load-path "~/.emacs.d/elisp/"
   :config
-  (imenu-list-minor-mode))
+  (imenu-list-minor-mode -1))
 
 ;; not important
 ;;(use-package beacon
