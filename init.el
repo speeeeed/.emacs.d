@@ -17,6 +17,7 @@
 
 (require 'init-cc)
 
+(require 'init-which-key)
 ;; (require 'init-yasnippet)
 
 ;; (require 'init-flycheck)
