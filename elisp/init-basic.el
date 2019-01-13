@@ -51,6 +51,7 @@
 (modify-syntax-entry ?_ "w")  ;; will set '_'  a part of word
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'c++-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
 ;; awesome-tab
 (use-package awesome-tab

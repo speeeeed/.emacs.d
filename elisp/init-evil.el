@@ -6,6 +6,7 @@
   (setcdr evil-insert-state-map nil)
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (evil-mode t)
+  (setq evil-flash-delay 10)
   (setq evil-emacs-state-cursor '("red" box))
   (setq evil-normal-state-cursor '("green" box))
   (setq evil-visual-state-cursor '("orange" box))
