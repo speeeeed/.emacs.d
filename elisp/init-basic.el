@@ -13,6 +13,11 @@
 (global-linum-mode t)            ;; global linum mode
 (setq inhibit-startup-message t)  ;; disable startup message
 (setq make-backup-files nil)      ;; disable make backup files
+
+;; highligh mode
+(global-hl-line-mode t)
+(set-face-foreground 'highlight nil)
+(set-face-attribute hl-line-face nil :underline nil)
 ;; set font
 (set-face-attribute 'default nil
                     :family "Monospace" :height 120 :weight 'normal)
