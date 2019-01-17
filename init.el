@@ -18,6 +18,8 @@
 (require 'init-cc)
 
 (require 'init-which-key)
+
+(require 'init-neotree)
 ;; (require 'init-yasnippet)
 
 ;; (require 'init-flycheck)
