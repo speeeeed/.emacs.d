@@ -3,7 +3,7 @@
 
 ;; basic setting
 ;; (load-theme 'deeper-blue)
-(load-theme 'wombat)
+;; (load-theme 'wombat)
 
 ;; face
 (tool-bar-mode -1)
