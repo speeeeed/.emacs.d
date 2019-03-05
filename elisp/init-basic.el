@@ -23,7 +23,7 @@
 (set-face-attribute hl-line-face nil :underline nil)
 ;; set font
 (set-face-attribute 'default nil
-                    :family "Monospace" :height 120 :weight 'normal)
+                    :family "Source Code Pro" :height 130 :weight 'normal)
 
 (if window-system
     (dolist (charset '(kana han symbol cjk-misc bopomofo))

@@ -6,7 +6,12 @@
 			(awk-mode . "awk")
 			(other . "linux")))
 (setq c-basic-offset 8)
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode -1
+ tab-always-indent -1
+ backward-delete-char-untabify-method nil)
+
+(add-to-list 'c-mode-hook
+ (lambda () (setq c-syntactic-indentation nil)))
 
 (defun set-c-mode-space ()
   (interactive)
