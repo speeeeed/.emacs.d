@@ -2,8 +2,9 @@
 
 
 ;; basic setting
-;; (load-theme 'deeper-blue)
+(load-theme 'deeper-blue)
 ;; (load-theme 'wombat)
+;; (load-theme 'adwaita)
 
 ;; face
 (tool-bar-mode -1)
@@ -18,9 +19,9 @@
 (setq make-backup-files nil)      ;; disable make backup files
 
 ;; highligh mode
-(global-hl-line-mode t)
-(set-face-foreground 'highlight nil)
-(set-face-attribute hl-line-face nil :underline nil)
+(global-hl-line-mode -1)
+;; (set-face-foreground 'highlight nil)
+;; (set-face-attribute hl-line-face nil :underline nil)
 ;; set font
 (set-face-attribute 'default nil
                     :family "Source Code Pro" :height 130 :weight 'normal)
@@ -54,14 +55,43 @@
 (add-hook 'emacs-lisp-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
 ;; awesome-tab
-(use-package awesome-tab
-  :load-path "~/.emacs.d/elisp"
+;; (use-package awesome-tab
+;;  :load-path "~/.emacs.d/elisp"
+;;  :config
+;;  (awesome-tab-mode -1)
+;;  :bind (("M-<left>" . awesome-tab-backward-tab)
+;;	 ("M-<right>" . awesome-tab-forward-tab)
+;;	 ("M-<up>" . awesome-tab-backward-group)
+;;	 ("M-<down>" . awesome-tab-forward-group)))
+
+(use-package tabbar
+  :ensure t
   :config
-  (awesome-tab-mode t)
-  :bind (("M-<left>" . awesome-tab-backward-tab)
-	 ("M-<right>" . awesome-tab-forward-tab)
-	 ("M-<up>" . awesome-tab-backward-group)
-	 ("M-<down>" . awesome-tab-forward-group)))
+  (tabbar-mode)
+  (set-face-attribute 'tabbar-default nil
+		      :family "Courier New"
+		      :background "gray80"
+		      :foreground "gray30"
+		      :height 1.0)
+
+  (set-face-attribute 'tabbar-selected nil
+		      :inherit 'tabbar-default
+		      :foreground "DarkGreen"
+		      :background "LightGoldenrod"
+		      :box '(:line-width 2 :color "DarkGoldenrod")
+		      :overline "black"
+		      :underline "black"
+		      :weight 'bold)
+
+  (set-face-attribute 'tabbar-unselected nil
+		      :inherit 'tabbar-default
+		      :box '(:line-width 2 :color "gray70"))
+  )
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
 
 (use-package imenu-list
   :load-path "~/.emacs.d/elisp/"
