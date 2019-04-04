@@ -15,12 +15,12 @@
   :type 'string
   :group 'zane-el)
 
-(setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "green" :foreground "black")))
-      evil-emacs-state-tag    (propertize "[E]" 'face '((:background "orange" :foreground "black")))
-      evil-insert-state-tag   (propertize "[I]" 'face '((:background "red") :foreground "white"))
-      evil-motion-state-tag   (propertize "[M]" 'face '((:background "blue") :foreground "white"))
-      evil-visual-state-tag   (propertize "[V]" 'face '((:background "grey80" :foreground "black")))
-      evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
+;;(setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "green" :foreground "black")))
+;;      evil-emacs-state-tag    (propertize "[E]" 'face '((:background "orange" :foreground "black")))
+;;      evil-insert-state-tag   (propertize "[I]" 'face '((:background "red") :foreground "white"))
+;;      evil-motion-state-tag   (propertize "[M]" 'face '((:background "blue") :foreground "white"))
+;;      evil-visual-state-tag   (propertize "[V]" 'face '((:background "grey80" :foreground "black")))
+;;      evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
 
 (setq zane-mode-line-format-list (list '(:propertize " %l " face (:weight bold))
 				  'mode-line-mule-info
@@ -37,6 +37,16 @@
 				  " {%m} " "-%-"))
 
 ;; (setq-default mode-line-format zane-mode-line-format-list)
+
+(defun enable-zane-mode-line-terminal ()
+  (setq-default mode-line-format zane-mode-line-format-list)
+  (setq mode-line-format zane-mode-line-format-list)
+  (force-mode-line-update))
+
+(defun disable-zane-mode-line-terminal ()
+  (setq-default mode-line-format nil)
+  (setq mode-line-format nil)
+  (force-mode-line-update))
 
 (defun enable-zane-mode-line ()
   ;; Restore mode-line colors.
@@ -121,8 +131,17 @@
 
 (defun zane-mode-line-mode (zane-mode)
   (setf mode-line-show zane-mode)
-  (if (= mode-line-show 1)
-      (enable-zane-mode-line)
-    (disable-zane-mode-line)))
+  (if window-system
+      (if (= mode-line-show 1)
+	  (enable-zane-mode-line)
+	(disable-zane-mode-line))
+    (if (= mode-line-show 1)
+	(enable-zane-mode-line-terminal)
+      (disable-zane-mode-line-terminal))
+    ))
+
+(if window-system
+    (message "window-system")
+    (message "not window-system"))
 
 (provide 'zane-mode-line)

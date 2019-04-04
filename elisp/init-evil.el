@@ -26,7 +26,7 @@
   (tabbar-mode menu-tool-tabbar-mode)
   (menu-bar-mode menu-tool-tabbar-mode)
   (tool-bar-mode menu-tool-tabbar-mode)
-  (toggle-mode-line)
+  (zane-mode-line-mode menu-tool-tabbar-mode)
   )
 
 (use-package evil-leader
