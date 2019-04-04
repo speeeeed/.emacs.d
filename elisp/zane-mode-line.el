@@ -36,7 +36,7 @@
 				  '(:propertize vc-mode face (:inherit font-lock-keyword-face :weight bold))
 				  " {%m} " "-%-"))
 
-(setq-default mode-line-format zane-mode-line-format-list)
+;; (setq-default mode-line-format zane-mode-line-format-list)
 
 (defun enable-zane-mode-line ()
   ;; Restore mode-line colors.
