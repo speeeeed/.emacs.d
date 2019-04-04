@@ -14,6 +14,16 @@
   (setq evil-replace-state-cursor '("red" bar))
   (setq evil-operator-state-cursor '("red" )))
 
+(defvar menu-tool-tabbar-mode 1)
+(defun toggle-menu-tool-tabbar ()
+  (interactive)
+  (if (= menu-tool-tabbar-mode 1)
+      (setf menu-tool-tabbar-mode -1)
+    (setf menu-tool-tabbar-mode 1))
+  (tabbar-mode menu-tool-tabbar-mode)
+  (menu-bar-mode menu-tool-tabbar-mode)
+  (tool-bar-mode menu-tool-tabbar-mode))
+
 (use-package evil-leader
   :ensure t
   :config
@@ -26,7 +36,19 @@
    "o" 'other-window
    "l" 'highlight-symbol-at-point
    "z" 'unhighlight-regexp
-   "w" 'whitespace-mode)
+   "x" 'kill-current-buffer
+   "t" 'tabbar-mode
+   "ut" 'toggle-menu-tool-tabbar
+
+   ;; window function
+   "wu" 'winner-undo
+   "wr" 'winner-redo
+   "wh" 'evil-window-left
+   "wj" 'evil-window-down
+   "wk" 'evil-window-up
+   "wl" 'evil-window-right
+;;   "uw" 'whitespace-mode
+   )
 
   (with-eval-after-load 'ivy
     (evil-leader/set-key
@@ -49,6 +71,18 @@
   (with-eval-after-load 'imenu-list
     (evil-leader/set-key
       "i" 'imenu-list-smart-toggle))
+
+  (with-eval-after-load 'window-numbering
+    (evil-leader/set-key
+      "0"  'delete-window
+      "1"  'select-window-1
+      "2"  'select-window-2
+      "3"  'select-window-3
+;;      "w/" 'split-window-right
+;;      "w-" 'split-window-below
+;;      ":"  'counsel-M-x
+;;      "wM" 'delete-other-windows
+  ))
 
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key
