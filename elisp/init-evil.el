@@ -1,3 +1,6 @@
+(require 'zane-mode-line)
+
+
 (use-package evil
   :ensure t
   :init
@@ -22,7 +25,9 @@
     (setf menu-tool-tabbar-mode 1))
   (tabbar-mode menu-tool-tabbar-mode)
   (menu-bar-mode menu-tool-tabbar-mode)
-  (tool-bar-mode menu-tool-tabbar-mode))
+  (tool-bar-mode menu-tool-tabbar-mode)
+  (toggle-mode-line)
+  )
 
 (use-package evil-leader
   :ensure t

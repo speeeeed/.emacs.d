@@ -64,42 +64,6 @@
 ;;	 ("M-<up>" . awesome-tab-backward-group)
 ;;	 ("M-<down>" . awesome-tab-forward-group)))
 
-(defun set-my-mode-line ()
-  (setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "green" :foreground "black")))
-	evil-emacs-state-tag    (propertize "[E]" 'face '((:background "orange" :foreground "black")))
-	evil-insert-state-tag   (propertize "[I]" 'face '((:background "red") :foreground "white"))
-	evil-motion-state-tag   (propertize "[M]" 'face '((:background "blue") :foreground "white"))
-	evil-visual-state-tag   (propertize "[V]" 'face '((:background "grey80" :foreground "black")))
-	evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
-
-  (setq-default mode-line-format
-              (list '(:propertize " %l " face (:weight bold))
-                    'mode-line-mule-info
-                    'mode-line-modified
-                    'mode-line-remote " "
-		    ;; evil state
-		    '(:eval (evil-generate-mode-line-tag evil-state))
-                    '(:eval (propertize " %b " 'face (if (buffer-modified-p) '(:background "#d33682" :foreground "#fdf6e3" :weight bold)
-                                                       '(:background "#268bd2" :foreground "#fdf6e3" :weight normal))))
-                    '(:propertize " %p/%I " face (:background "gray60" :foreground "#fdf6e3"))
-                    '(:eval (propertize (concat " " (eyebrowse-mode-line-indicator) " ")))
-                    '(:eval (propertize (format-time-string "%p·%H:%M ") 'help-echo (format-time-string "%F %a") 'face '(:inherit 'font-lock-doc-face)))
-                    '(:propertize vc-mode face (:inherit font-lock-keyword-face :weight bold))
-                    " {%m} " "-%-"))
-  )
-
-(set-my-mode-line)
-
-(defvar mode-line-show 1)
-(defun toggle-mode-line ()
-  (interactive)
-  (if (= mode-line-show 1)
-      (setf mode-line-show -1)
-    (setf mode-line-show 1))
-  (if (= mode-line-show 1)
-      (set-my-mode-line)
-    (setq mode-line-format nil))
-  )
 
 
 (use-package tabbar
@@ -160,5 +124,6 @@
   (window-numbering-mode 1)
   (winner-mode 1))
 
+(require 'zane-mode-line)
 
 (provide 'init-basic)
