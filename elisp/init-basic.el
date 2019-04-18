@@ -2,18 +2,20 @@
 
 
 ;; basic setting
-(load-theme 'deeper-blue)
-;; (load-theme 'wombat)
-;; (load-theme 'adwaita)
 
 ;; face
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (if window-system
-    (scroll-bar-mode -1))
+    (progn
+      (scroll-bar-mode -1)
+      (load-theme 'deeper-blue)
+      )
+  (progn
+    (setq linum-format "%4d ")
+    ;; (load-theme 'manoj-dark)
+    ))
 (scroll-all-mode -1)
-(if (not window-system)
-    (setq linum-format "%4d "))
 (global-linum-mode t)            ;; global linum mode
 (setq inhibit-startup-message t)  ;; disable startup message
 (setq make-backup-files nil)      ;; disable make backup files

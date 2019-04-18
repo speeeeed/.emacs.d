@@ -1,6 +1,5 @@
 (require 'zane-mode-line)
 
-
 (use-package evil
   :ensure t
   :init
@@ -35,54 +34,74 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-   ;; Normal function
-   "s" 'save-buffer
-   "r" 'recentf-open-files
-   "o" 'other-window
-   "l" 'highlight-symbol-at-point
-   "z" 'unhighlight-regexp
-   "x" 'kill-current-buffer
-   "t" 'tabbar-mode
-   "ut" 'toggle-menu-tool-tabbar
+   ;; file operation
+   "fs" 'save-buffer
 
-   ;; window function
+   ;; UI operation
+   "um" 'toggle-menu-tool-tabbar
+   "ut" 'tabbar-mode
+
+   ;; Normal function
+   "nr" 'recentf-open-files
+   "nl" 'highlight-symbol-at-point
+   "nz" 'unhighlight-regexp
+   "nw" 'whitespace-mode
+
+   ;; Buffer operation
+   "bd" 'kill-current-buffer
+   "bs" 'swiper
+   ;; "bb" 'ivy-switch-buffer
+
+   ;; window operation
+   "ww" 'other-window
+   "w -" 'split-window-below
+   "w /" 'split-window-right
+   "wk" 'delete-window
+   "wo" 'delete-other-windows
    "wu" 'winner-undo
    "wr" 'winner-redo
    "wh" 'evil-window-left
    "wj" 'evil-window-down
    "wk" 'evil-window-up
    "wl" 'evil-window-right
-;;   "uw" 'whitespace-mode
+   "w [" 'shrink-window-horizontally
+   "w ]" 'enlarge-window-horizontally
+   "w ^" 'enlarge-window
+   "w *" 'shrink-window
    )
 
   (with-eval-after-load 'ivy
     (evil-leader/set-key
-      "b" 'ivy-switch-buffer))
+      "bb" 'ivy-switch-buffer))
 
   (with-eval-after-load 'counsel
     (evil-leader/set-key
-      "f" 'counsel-find-file
+      "ff" 'counsel-find-file
       "<SPC>" 'counsel-M-x
-      "h k" 'counsel-descbinds
-      "h v" 'counsel-describe-variable
-      "h f" 'counsel-describe-function))
+      "hk" 'counsel-descbinds
+      "hv" 'counsel-describe-variable
+      "hf" 'counsel-describe-function))
 
   ;; Projectile
   (with-eval-after-load 'counsel-projectile
     (evil-leader/set-key
-      "p f" 'counsel-projectile-find-file
-      "p d" 'counsel-projectile-find-dir))
+      "pf" 'counsel-projectile-find-file
+      "pd" 'counsel-projectile-find-dir))
 
   (with-eval-after-load 'imenu-list
     (evil-leader/set-key
-      "i" 'imenu-list-smart-toggle))
+      "ni" 'imenu-list-smart-toggle))
+
+  (with-eval-after-load 'neotree
+    (evil-leader/set-key
+      "nn" 'neotree-toggle))
 
   (with-eval-after-load 'window-numbering
     (evil-leader/set-key
-      "0"  'delete-window
-      "1"  'select-window-1
-      "2"  'select-window-2
-      "3"  'select-window-3
+      "w0"  'delete-window
+      "w1"  'select-window-1
+      "w2"  'select-window-2
+      "w3"  'select-window-3
 ;;      "w/" 'split-window-right
 ;;      "w-" 'split-window-below
 ;;      ":"  'counsel-M-x
@@ -92,13 +111,13 @@
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key
       ;; GNU global tags
-      "g r" 'counsel-gtags-find-reference
-      "g d" 'counsel-gtags-find-definition
-      "g b" 'counsel-gtags-go-backward
-      "g f" 'counsel-gtags-go-forward
-      "g s" 'counsel-gtags-find-symbol
-      "g t" 'counsel-gtags-dwim
-      "g u" 'counsel-gtags-update-tags)))
+      "gr" 'counsel-gtags-find-reference
+      "gd" 'counsel-gtags-find-definition
+      "gb" 'counsel-gtags-go-backward
+      "gf" 'counsel-gtags-go-forward
+      "gs" 'counsel-gtags-find-symbol
+      "gt" 'counsel-gtags-dwim
+      "gu" 'counsel-gtags-update-tags)))
 
 (use-package evil-surround
   :ensure t
@@ -110,6 +129,9 @@
   :init
   (setq evil-want-keybinding nil)
   :config
+  (with-eval-after-load 'neotree
+    (require 'evil-collection-neotree)
+    (evil-collection-neotree-setup))
   (with-eval-after-load 'imenu-list
     (require 'evil-collection-imenu-list)
     (evil-collection-imenu-list-setup)))
