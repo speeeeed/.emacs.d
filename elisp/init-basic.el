@@ -7,8 +7,8 @@
 ;; (load-theme 'adwaita)
 
 ;; face
-(tool-bar-mode t)
-(menu-bar-mode t)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (if window-system
     (scroll-bar-mode -1))
 (scroll-all-mode -1)
@@ -123,6 +123,9 @@
   :config
   (window-numbering-mode 1)
   (winner-mode 1))
+
+(use-package magit
+  :ensure t)
 
 (require 'zane-mode-line)
 
