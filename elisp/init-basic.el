@@ -9,7 +9,7 @@
 (if window-system
     (progn
       (scroll-bar-mode -1)
-      (load-theme 'deeper-blue)
+      (load-theme 'tsdh-light)
       )
   (progn
     (setq linum-format "%4d ")
@@ -26,7 +26,7 @@
 ;; (set-face-attribute hl-line-face nil :underline nil)
 ;; set font
 (set-face-attribute 'default nil
-                    :family "Source Code Pro" :height 130 :weight 'normal)
+		    :family "Source Code Pro" :height 130 :weight 'normal)
 
 (if window-system
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
@@ -38,6 +38,8 @@
 (require 'vc)
 (delete 'Git vc-handled-backends)
 
+(remove-hook 'find-file-hook 'vc-find-file-hook)
+
 (setq initial-scratch-message ";; Happy Hacking, enjoy emacs!\n\n")
 
 ;; init octave mode
@@ -45,11 +47,11 @@
 (setq auto-mode-alist
       (cons '("\\.m$" . octave-mode) auto-mode-alist))
 (add-hook 'octave-mode-hook
-          (lambda ()
-            (abbrev-mode 1)
-            (auto-fill-mode 1)
-            (if (eq window-system 'x)
-                (font-lock-mode 1))))
+	  (lambda ()
+	    (abbrev-mode 1)
+	    (auto-fill-mode 1)
+	    (if (eq window-system 'x)
+		(font-lock-mode 1))))
 
 (modify-syntax-entry ?_ "w")  ;; will set '_'  a part of word
 (add-hook 'c-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
@@ -114,11 +116,11 @@
 ;;  (beacon-mode t))
 
 ;; for test
-(use-package multiple-cursors
-  :ensure t
-  :bind ("C->" . mc/mark-next-like-this)
-  ("C-<" . mc/mark-previous-like-this)
-  ("C-c C-<" . mc/mark-all-like-this))
+;; (use-package multiple-cursors
+;;   :ensure t
+;;   :bind ("C->" . mc/mark-next-like-this)
+;;   ("C-<" . mc/mark-previous-like-this)
+;;   ("C-c C-<" . mc/mark-all-like-this))
 
 (use-package window-numbering
   :ensure t
@@ -126,41 +128,43 @@
   (window-numbering-mode 1)
   (winner-mode 1))
 
-(use-package magit
-  :ensure t)
+;; (use-package magit
+;;  :ensure t)
 
 ;; Visualize TAB, (HARD) SPACE, NEWLINE
-(use-package whitespace
-  :ensure nil
-  :diminish
-  :hook ((prog-mode outline-mode conf-mode) . whitespace-mode)
-  :config
-  (setq whitespace-line-column fill-column) ;; limit line length
-  ;; automatically clean up bad whitespace
-  (setq whitespace-action '(auto-cleanup))
-  ;; only show bad whitespace
-  (setq whitespace-style '(face
-                           trailing space-before-tab
-                           indentation empty space-after-tab))
+;; (use-package whitespace
+;;   :ensure nil
+;;   :diminish
+;;   :hook ((prog-mode outline-mode conf-mode) . whitespace-mode)
+;;   :config
+;;   (setq whitespace-line-column fill-column) ;; limit line length
+;;   ;; automatically clean up bad whitespace
+;;   (setq whitespace-action '(auto-cleanup))
+;;   ;; only show bad whitespace
+;;   (setq whitespace-style '(face
+;;                            trailing space-before-tab
+;;                            indentation empty space-after-tab))
+;;
+;;   (with-eval-after-load 'popup
+;;     ;; advice for whitespace-mode conflict with popup
+;;     (defvar my-prev-whitespace-mode nil)
+;;     (make-local-variable 'my-prev-whitespace-mode)
+;;
+;;     (defadvice popup-draw (before my-turn-off-whitespace activate compile)
+;;       "Turn off whitespace mode before showing autocomplete box."
+;;       (if whitespace-mode
+;;           (progn
+;;             (setq my-prev-whitespace-mode t)
+;;             (whitespace-mode -1))
+;;         (setq my-prev-whitespace-mode nil)))
+;;
+;;     (defadvice popup-delete (after my-restore-whitespace activate compile)
+;;       "Restore previous whitespace mode when deleting autocomplete box."
+;;       (if my-prev-whitespace-mode
+;;           (whitespace-mode 1)))))
 
-  (with-eval-after-load 'popup
-    ;; advice for whitespace-mode conflict with popup
-    (defvar my-prev-whitespace-mode nil)
-    (make-local-variable 'my-prev-whitespace-mode)
+;; (require 'zane-mode-line)
 
-    (defadvice popup-draw (before my-turn-off-whitespace activate compile)
-      "Turn off whitespace mode before showing autocomplete box."
-      (if whitespace-mode
-          (progn
-            (setq my-prev-whitespace-mode t)
-            (whitespace-mode -1))
-        (setq my-prev-whitespace-mode nil)))
-
-    (defadvice popup-delete (after my-restore-whitespace activate compile)
-      "Restore previous whitespace mode when deleting autocomplete box."
-      (if my-prev-whitespace-mode
-          (whitespace-mode 1)))))
-
-(require 'zane-mode-line)
+(setq ring-bell-function 'ignore)
 
 (provide 'init-basic)

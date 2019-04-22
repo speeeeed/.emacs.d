@@ -28,6 +28,11 @@
   (zane-mode-line-mode menu-tool-tabbar-mode)
   )
 
+(defun swiper-at-point (sym)
+  "Use `swiper' to search for the `sym' at point."
+  (interactive (list (thing-at-point 'symbol)))
+  (swiper sym))
+
 (use-package evil-leader
   :ensure t
   :config
@@ -50,6 +55,7 @@
    ;; Buffer operation
    "bd" 'kill-current-buffer
    "bs" 'swiper
+   "bf" 'swiper-at-point
    ;; "bb" 'ivy-switch-buffer
 
    ;; window operation
