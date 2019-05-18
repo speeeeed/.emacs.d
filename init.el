@@ -3,6 +3,7 @@
 (load custom-file)
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
+(add-to-list 'load-path "~/.emacs.d/elisp/emacs-ccls")
 
 ;; init-elpa should be first
 (require 'init-elpa)
@@ -23,7 +24,7 @@
 
 (require 'init-magit)
 
-(require 'init-lsp)
+;; (require 'init-lsp)
 
 ;; (require 'init-yasnippet)
 
