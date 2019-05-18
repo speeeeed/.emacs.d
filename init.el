@@ -20,6 +20,11 @@
 (require 'init-which-key)
 
 (require 'init-neotree)
+
+(require 'init-magit)
+
+(require 'init-lsp)
+
 ;; (require 'init-yasnippet)
 
 ;; (require 'init-flycheck)

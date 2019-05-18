@@ -1,4 +1,7 @@
-(require 'zane-mode-line)
+;; (require 'zane-mode-line)
+
+(use-package undo-tree
+  :ensure t)
 
 (use-package evil
   :ensure t
@@ -16,17 +19,17 @@
   (setq evil-replace-state-cursor '("red" bar))
   (setq evil-operator-state-cursor '("red" )))
 
-(defvar menu-tool-tabbar-mode 1)
-(defun toggle-menu-tool-tabbar ()
-  (interactive)
-  (if (= menu-tool-tabbar-mode 1)
-      (setf menu-tool-tabbar-mode -1)
-    (setf menu-tool-tabbar-mode 1))
-  (tabbar-mode menu-tool-tabbar-mode)
-  (menu-bar-mode menu-tool-tabbar-mode)
-  (tool-bar-mode menu-tool-tabbar-mode)
-  (zane-mode-line-mode menu-tool-tabbar-mode)
-  )
+;; (defvar menu-tool-tabbar-mode 1)
+;; (defun toggle-menu-tool-tabbar ()
+;;   (interactive)
+;;   (if (= menu-tool-tabbar-mode 1)
+;;       (setf menu-tool-tabbar-mode -1)
+;;     (setf menu-tool-tabbar-mode 1))
+;;   (tabbar-mode menu-tool-tabbar-mode)
+;;   (menu-bar-mode menu-tool-tabbar-mode)
+;;   (tool-bar-mode menu-tool-tabbar-mode)
+;;   (zane-mode-line-mode menu-tool-tabbar-mode)
+;;   )
 
 (defun swiper-at-point (sym)
   "Use `swiper' to search for the `sym' at point."
