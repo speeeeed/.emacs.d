@@ -3,9 +3,13 @@
 ;; basic setting
 
 ;; face
-(tool-bar-mode -1) (menu-bar-mode -1)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
+(load-theme 'monokai)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (if window-system (progn (scroll-bar-mode -1)
-      (load-theme 'tsdh-light)
+      ;; (load-theme 'tsdh-light)
       )
   (progn
     (setq linum-format "%4d ")
