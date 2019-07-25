@@ -19,18 +19,6 @@
   (setq evil-replace-state-cursor '("red" bar))
   (setq evil-operator-state-cursor '("red" )))
 
-;; (defvar menu-tool-tabbar-mode 1)
-;; (defun toggle-menu-tool-tabbar ()
-;;   (interactive)
-;;   (if (= menu-tool-tabbar-mode 1)
-;;       (setf menu-tool-tabbar-mode -1)
-;;     (setf menu-tool-tabbar-mode 1))
-;;   (tabbar-mode menu-tool-tabbar-mode)
-;;   (menu-bar-mode menu-tool-tabbar-mode)
-;;   (tool-bar-mode menu-tool-tabbar-mode)
-;;   (zane-mode-line-mode menu-tool-tabbar-mode)
-;;   )
-
 (defun swiper-at-point (sym)
   "Use `swiper' to search for the `sym' at point."
   (interactive (list (thing-at-point 'symbol)))
@@ -133,6 +121,11 @@
   :config
   (global-evil-surround-mode 1))
 
+(use-package evil-escape
+  :load-path "~/.emacs.d/elisp"
+  :config
+  (evil-escape-mode))
+
 (use-package evil-collection
   :ensure t
   :init
@@ -141,6 +134,9 @@
   (with-eval-after-load 'neotree
     (require 'evil-collection-neotree)
     (evil-collection-neotree-setup))
+  (with-eval-after-load 'dired
+    (require 'evil-collection-dired)
+    (evil-collection-dired-setup))
   (with-eval-after-load 'imenu-list
     (require 'evil-collection-imenu-list)
     (evil-collection-imenu-list-setup)))

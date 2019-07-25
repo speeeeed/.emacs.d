@@ -36,7 +36,7 @@
 
 (remove-hook 'find-file-hook 'vc-find-file-hook)
 
-(setq initial-scratch-message ";; Happy Hacking, enjoy emacs!\n\n")
+(setq initial-scratch-message ";; Keep calm and carry on!\n\n")
 
 ;; init octave mode
 ;; (autoload 'octave-mode "octave-mode" nil t)
