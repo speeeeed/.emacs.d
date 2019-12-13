@@ -131,14 +131,16 @@
   :init
   (setq evil-want-keybinding nil)
   :config
-  (with-eval-after-load 'neotree
-    (require 'evil-collection-neotree)
-    (evil-collection-neotree-setup))
-  (with-eval-after-load 'dired
-    (require 'evil-collection-dired)
-    (evil-collection-dired-setup))
-  (with-eval-after-load 'imenu-list
-    (require 'evil-collection-imenu-list)
-    (evil-collection-imenu-list-setup)))
+  (evil-collection-init)
+  ;;(with-eval-after-load 'neotree
+  ;;  (require 'evil-collection-neotree)
+  ;;  (evil-collection-neotree-setup))
+  ;;(with-eval-after-load 'dired
+  ;;  (require 'evil-collection-dired)
+  ;; (evil-collection-dired-setup))
+  ;;(with-eval-after-load 'imenu-list
+  ;;  (require 'evil-collection-imenu-list)
+  ;;  (evil-collection-imenu-list-setup))
+  )
 
 (provide 'init-evil)

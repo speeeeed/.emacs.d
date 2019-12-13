@@ -22,7 +22,7 @@
 
 ;; set font
 (set-face-attribute 'default nil
-		    :family "Source Code Pro" :height 130 :weight 'normal)
+		    :family "Consolas" :height 130 :weight 'normal)
 
 (if window-system
     (dolist (charset '(kana han symbol cjk-misc bopomofo))
