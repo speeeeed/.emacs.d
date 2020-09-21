@@ -140,8 +140,4 @@
       (disable-zane-mode-line-terminal))
     ))
 
-(if window-system
-    (message "window-system")
-    (message "not window-system"))
-
 (provide 'zane-mode-line)

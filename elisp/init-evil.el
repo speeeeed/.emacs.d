@@ -12,12 +12,7 @@
   (define-key evil-insert-state-map [escape] 'evil-normal-state)
   (evil-mode t)
   (setq evil-flash-delay 10)
-  (setq evil-emacs-state-cursor '("red" box))
-  (setq evil-normal-state-cursor '("green" box))
-  (setq evil-visual-state-cursor '("orange" box))
-  (setq evil-insert-state-cursor '("red" bar))
-  (setq evil-replace-state-cursor '("red" bar))
-  (setq evil-operator-state-cursor '("red" )))
+)
 
 (defun swiper-at-point (sym)
   "Use `swiper' to search for the `sym' at point."
@@ -54,7 +49,7 @@
    "w -" 'split-window-below
    "w /" 'split-window-right
    "wk" 'delete-window
-   "wo" 'delete-other-windows
+   "wdo" 'delete-other-windows
    "wu" 'winner-undo
    "wr" 'winner-redo
    "wh" 'evil-window-left
@@ -128,6 +123,7 @@
 
 (use-package evil-collection
   :ensure t
+  :defer t
   :init
   (setq evil-want-keybinding nil)
   :config
