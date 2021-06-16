@@ -88,18 +88,6 @@
     (evil-leader/set-key
       "nn" 'neotree-toggle))
 
-  (with-eval-after-load 'window-numbering
-    (evil-leader/set-key
-      "w0"  'delete-window
-      "w1"  'select-window-1
-      "w2"  'select-window-2
-      "w3"  'select-window-3
-;;      "w/" 'split-window-right
-;;      "w-" 'split-window-below
-;;      ":"  'counsel-M-x
-;;      "wM" 'delete-other-windows
-  ))
-
   (with-eval-after-load 'counsel-gtags
     (evil-leader/set-key
       ;; GNU global tags

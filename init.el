@@ -34,7 +34,7 @@
 (require 'init-ivy)
 (require 'init-which-key)
 (require 'init-completion)
-;; (require 'init-neotree)
+(require 'init-neotree)
 ;; (require 'init-magit)
 
 ;; program language

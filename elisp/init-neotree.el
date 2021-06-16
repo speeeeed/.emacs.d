@@ -1,11 +1,7 @@
+;;; neotree.el
 
-
-;;(use-package neotree
-;;  :ensure t
-;;  :bind (([f8] . 'neotree-toggle)))
-
-(use-package treemacs
+(use-package neotree
   :ensure t
-  :bind (([f8] . 'treemacs)))
+  :bind (([f8] . 'neotree-toggle)))
 
 (provide 'init-neotree)
