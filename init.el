@@ -1,4 +1,4 @@
-;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
+;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
@@ -39,7 +39,6 @@
 
 ;; program language
 (require 'init-cc)
-;; (require 'init-lua)
 (require 'init-python)
 
 ;; (require 'init-lsp)

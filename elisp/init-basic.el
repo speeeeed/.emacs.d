@@ -4,28 +4,6 @@
 
 ;; face
 (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
-;; (load-theme 'monokai)
-;; (load-theme 'adwaita)
-(use-package doom-themes
-  :ensure t
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-acario-light t)
-
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
 
 (global-linum-mode t)            ;; global linum mode
 (setq inhibit-startup-message t)  ;; disable startup message
@@ -77,35 +55,11 @@
 (add-hook 'dts-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 (add-hook 'makefile-gmake-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
-(use-package imenu-list
-  :load-path "~/.emacs.d/elisp/")
+;;(use-package imenu-list
+;;  :load-path "~/.emacs.d/elisp/")
 
 (use-package dts-mode
   :ensure t)
-
-(use-package memoize
-  :ensure t)
-
-(use-package all-the-icons
-  :load-path "~/.emacs.d/elisp/site/all-the-icons"
-  :ensure t)
-
-(use-package awesome-tab
-  :load-path "~/.emacs.d/elisp/site/awesome-tab"
-  :init
-  (bind-key "M-<left>"  'awesome-tab-backward-tab)
-  (bind-key "M-<right>" 'awesome-tab-forward-tab)
-  (bind-key "M-<up>"  'awesome-tab-backward-group)
-  (bind-key "M-<down>" 'awesome-tab-forward-group)
-  :config
-  (awesome-tab-mode t)
-  (setq awesome-tab-height 130)
-  (setq awesome-tab-label-fixed-length 14))
-
-(use-package doom-modeline
-  :ensure t
-  :config
-  (doom-modeline-mode 1))
 
 (setq ring-bell-function 'ignore)
 
@@ -121,12 +75,9 @@
 (setq scroll-step 1
       scroll-conservatively 10000)
 
-;; (use-package aweshell
-;;  :load-path "~/.emacs.d/elisp/site/aweshell")
-
 (electric-indent-mode -1)
 
-(setq exec-path (append exec-path '("E:\\software\\glo663wb\\bin")))
+;; (setq exec-path (append exec-path '("E:\\software\\glo663wb\\bin")))
 
 (use-package markdown-mode
   :ensure t)
