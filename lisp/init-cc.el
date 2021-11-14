@@ -23,11 +23,6 @@
   (setq c-basic-offset 8)
   (setq-default indent-tabs-mode t))
 
-(use-package smartparens
-  :ensure t
-  :config
-  (smartparens-global-mode t))
-
 (defun my-c-mode-font-lock-if0 (limit)
   (save-restriction
     (widen)

@@ -23,11 +23,11 @@
 
 ;; init load path
 (add-to-list 'load-path "~/.emacs.d/lisp")
-
 ;; init-elpa should be first
 (require 'init-elpa)
 
 (require 'init-basic)
+(require 'init-paredit)
 (require 'init-evil)
 (require 'init-ivy)
 (require 'init-completion)
