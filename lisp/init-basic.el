@@ -3,13 +3,20 @@
 ;; basic setting
 
 (defun config-theme ()
+  (use-package color-theme-sanityinc-solarized
+    :ensure t)
+  (use-package color-theme-sanityinc-tomorrow
+    :ensure t)
+  (setq custom-safe-themes t)
+  (setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
   (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
-  (load-theme 'monokai))
+)
+
 
 (defun emacs-basic-setup ()
   (global-linum-mode t)            ;; global linum mode
   (if (not window-system)
-      (setq linum-format "%4d|"))
+      (setq linum-format "%4d "))
   (setq inhibit-startup-message t)  ;; disable startup message
   (setq make-backup-files nil)      ;; disable make backup files
   (setq-default make-backup-files nil)
@@ -58,5 +65,14 @@
 (emacs-basic-setup)
 (font-setup)
 (some-misc-mode-setup)
+
+(defun reapply-themes ()
+  "Forcibly load the themes listed in `custom-enabled-themes'."
+  (dolist (theme custom-enabled-themes)
+    (unless (custom-theme-p theme)
+      (load-theme theme)))
+  (custom-set-variables `(custom-enabled-themes (quote ,custom-enabled-themes))))
+
+(add-hook 'after-init-hook 'reapply-themes)
 
 (provide 'init-basic)
