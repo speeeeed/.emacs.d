@@ -56,10 +56,6 @@
    "wj" 'evil-window-down
    "wk" 'evil-window-up
    "wl" 'evil-window-right
-   "w [" 'shrink-window-horizontally
-   "w ]" 'enlarge-window-horizontally
-   "w ^" 'enlarge-window
-   "w *" 'shrink-window
    )
 
   (with-eval-after-load 'ivy
@@ -78,6 +74,7 @@
   (with-eval-after-load 'counsel-projectile
     (evil-leader/set-key
       "pf" 'counsel-projectile-find-file
+      "pg" 'counsel-projectile-rg
       "pd" 'counsel-projectile-find-dir))
 
   (with-eval-after-load 'imenu-list
@@ -99,11 +96,6 @@
       "gt" 'counsel-gtags-dwim
       "gu" 'counsel-gtags-update-tags)))
 
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1))
-
 (use-package evil-escape
   :load-path "~/.emacs.d/elisp"
   :config
@@ -116,15 +108,6 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-collection-init)
-  ;;(with-eval-after-load 'neotree
-  ;;  (require 'evil-collection-neotree)
-  ;;  (evil-collection-neotree-setup))
-  ;;(with-eval-after-load 'dired
-  ;;  (require 'evil-collection-dired)
-  ;; (evil-collection-dired-setup))
-  ;;(with-eval-after-load 'imenu-list
-  ;;  (require 'evil-collection-imenu-list)
-  ;;  (evil-collection-imenu-list-setup))
   )
 
 (provide 'init-evil)

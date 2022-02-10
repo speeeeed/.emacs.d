@@ -23,4 +23,9 @@
   :config
   (counsel-projectile-mode t))
 
+(use-package ivy-posframe
+  :ensure t
+  :config
+  (ivy-posframe-mode t))
+
 (provide 'init-ivy)

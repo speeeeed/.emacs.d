@@ -8,9 +8,9 @@
   (use-package color-theme-sanityinc-tomorrow
     :ensure t)
   (setq custom-safe-themes t)
-  (setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/")
-)
+  ;;(setq-default custom-enabled-themes '(sanityinc-tomorrow-night))
+  (setq-default custom-enabled-themes '(sanityinc-solarized-light))
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/theme/"))
 
 
 (defun emacs-basic-setup ()
@@ -90,5 +90,11 @@
     (add-to-list 'dimmer-exclusion-predicates 'sanityinc/display-non-graphic-p)))
 
 (add-hook 'after-init-hook 'reapply-themes)
+
+(use-package ripgrep
+  :ensure t)
+
+(use-package imenu-list
+  :ensure t)
 
 (provide 'init-basic)
