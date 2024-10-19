@@ -21,23 +21,43 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load custom-file)
 
-;; init load path
-(add-to-list 'load-path "~/.emacs.d/lisp")
-;; (add-to-list 'load-path "~/.emacs.d/site-lisp")
-;; init-elpa should be first
-(require 'init-elpa)
+(defun add-subdirectory (dir)
+  "Load the init.el file from the subdirectory DIR."
+  (interactive "DDirectory: ")
+  (let ((init-file (expand-file-name "minit.el" dir)))
+    (when (file-exists-p init-file)
+      (load init-file)
+      (message "Loaded init.el from %s" dir)
+      t)))
 
-(require 'init-basic)
+(defmacro include-current-directory ()
+  "Add the directory of the current file to `load-path'."
+  `(let ((file-name (buffer-file-name)))
+     (when file-name
+       (let* ((file-dir (file-name-directory file-name))
+              (directory (file-truename file-dir)))
+         (unless (member directory load-path)
+           (add-to-list 'load-path directory)
+           (message "Added %s to `load-path'." directory))))))
+
+(add-subdirectory "lisp")
+(add-subdirectory "site-lisp")
+(add-subdirectory "theme")
+
+;; init-elpa should be first
+;; (require 'init-elpa)
+
+;; (require 'init-basic)
 ;; (require 'init-paredit)
-(require 'init-evil)
-(require 'init-ivy)
-(require 'init-completion)
+;; (require 'init-evil)
+;; (require 'init-ivy)
+;; (require 'init-completion)
 ;; (require 'init-neotree)
 ;; (require 'init-magit)
-(require 'init-which-key)
+;; (require 'init-which-key)
 
 ;; program language
-(require 'init-cc)
-(require 'init-python)
+;; (require 'init-cc)
+;; (require 'init-python)
 
 ;; (require 'init-rime)

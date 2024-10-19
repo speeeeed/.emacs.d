@@ -1,0 +1,6 @@
+(add-subdirectory "bootstrap")
+(add-subdirectory "common")
+(add-subdirectory "ui")
+(add-subdirectory "evil")
+(add-subdirectory "program")
+(add-subdirectory "lang")
